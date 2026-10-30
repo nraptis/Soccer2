@@ -1,0 +1,59 @@
+#include "Soccer2.hpp"
+
+#define SOCCER_ENCRYPTION_STRENGTH_DEFINED
+#define SOCCER2_DISABLE_COMPAT_ALIAS
+#include "../Composer/Soccer2.hpp"
+
+void Soccer2::SetDelegate(SoccerDelegate *pDelegate) {
+    Soccer2Internal::SetDelegate(pDelegate);
+}
+
+void Soccer2::ConfigureTestBuffers(std::uint32_t pTestBlockLength) {
+    Soccer2Internal::ConfigureTestBuffers(pTestBlockLength);
+}
+
+bool Soccer2::AttemptSeed_Encrypt(EncryptionStrength pStrength,
+                                  std::uint8_t *pPassword,
+                                  std::size_t pPasswordByteLength,
+                                  std::uint64_t pNonce,
+                                  std::uint32_t *pAckWord,
+                                  std::uint64_t pVersion,
+                                  const std::atomic<bool> *pCancelled) {
+    return Soccer2Internal::AttemptSeed_Encrypt(pStrength,
+                                                pPassword,
+                                                pPasswordByteLength,
+                                                pNonce,
+                                                pAckWord,
+                                                pVersion,
+                                                pCancelled);
+}
+
+bool Soccer2::AttemptSeed_Decrypt(EncryptionStrength pStrength,
+                                  std::uint8_t *pPassword,
+                                  std::size_t pPasswordByteLength,
+                                  std::uint64_t pNonce,
+                                  std::uint32_t pAckWord,
+                                  std::uint64_t pVersion,
+                                  const std::atomic<bool> *pCancelled) {
+    return Soccer2Internal::AttemptSeed_Decrypt(pStrength,
+                                                pPassword,
+                                                pPasswordByteLength,
+                                                pNonce,
+                                                pAckWord,
+                                                pVersion,
+                                                pCancelled);
+}
+
+bool Soccer2::EncryptBlock(std::uint8_t *pSource,
+                           std::uint8_t *pDestination) {
+    return Soccer2Internal::EncryptBlock(pSource, pDestination);
+}
+
+bool Soccer2::DecryptBlock(std::uint8_t *pSource,
+                           std::uint8_t *pDestination) {
+    return Soccer2Internal::DecryptBlock(pSource, pDestination);
+}
+
+void Soccer2::Zero() {
+    Soccer2Internal::Zero();
+}
